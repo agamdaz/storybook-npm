@@ -32,7 +32,7 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "compile": "tsc -p tsconfig.release.json"
+    "prepublishOnly": "tsc -p tsconfig.release.json"
   },
   "eslintConfig": {
     "extends": [
