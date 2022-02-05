@@ -1,17 +1,29 @@
-import styled from "styled-components";
+import React, { FC, ReactElement } from "react";
+import { style } from "typestyle";
 
 export type ButtonProps = {
-  primary?: boolean;
+  color?: "default" | "primary";
+  onClick: () => void;
+  title: string;
 };
 
-export const Button = styled.button<ButtonProps>`
-  /* Adapt the colors based on primary prop */
-  background: ${(props) => (props.primary ? "palevioletred" : "white")};
-  color: ${(props) => (props.primary ? "white" : "palevioletred")};
+const getStyles = (color: string) =>
+  style({
+    background: `${color === "primary" ? "deeppink" : "white"}`,
+    border: `.1rem solid ${color === "primary" ? "deeppink" : "gray"}`,
+    borderRadius: ".25rem",
+    color: `${color === "primary" ? "white" : "gray"}`,
+    cursor: "pointer",
+    padding: ".25rem 1rem",
+  });
 
-  font-size: 1em;
-  margin: 1em;
-  padding: 0.25em 1em;
-  border: 2px solid palevioletred;
-  border-radius: 3px;
-`;
+export const Button: FC<ButtonProps> = ({
+  color = "base",
+  children,
+  onClick,
+  title,
+}): ReactElement => (
+  <button className={getStyles(color)} onClick={onClick} title={title}>
+    {children}
+  </button>
+);

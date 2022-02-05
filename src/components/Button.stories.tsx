@@ -5,7 +5,7 @@ import { action } from "@storybook/addon-actions";
 import { Button, ButtonProps } from "./Button";
 
 type StoryProps = ButtonProps & {
-  label: string;
+  text: string;
 };
 
 export default {
@@ -13,18 +13,19 @@ export default {
   component: Button,
 } as Meta;
 
-const Template: Story<StoryProps> = ({ label, ...args }) => (
-  <Button {...args} onClick={action("clicked")}>
-    {label}
+const Template: Story<StoryProps> = ({ text, ...args }) => (
+  <Button {...args} onClick={action(`${text} clicked`)} title={text}>
+    {text}
   </Button>
 );
 
 export const Default = Template.bind({});
 Default.args = {
-  label: "Default Button",
+  text: "Default button",
 };
+
 export const Primary = Template.bind({});
 Primary.args = {
-  label: "Primary Button",
-  primary: true,
+  color: "primary",
+  text: "Primary button",
 };
