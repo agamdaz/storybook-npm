@@ -1,7 +1,8 @@
-import React, { FC, ReactElement } from "react";
+import { FC, ReactElement } from "react";
 import { style } from "typestyle";
 
 export type ButtonProps = {
+  children: string;
   color?: "default" | "primary";
   onClick: () => void;
   title: string;
